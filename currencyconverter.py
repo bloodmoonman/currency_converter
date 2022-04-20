@@ -3,8 +3,6 @@ from tkinter import *
 import tkinter as tk
 from tkinter import ttk
 
-#Create the CurrencyConverter class
-
 class RealTimeCurrencyConverter():
     def __init__(self, url):
         self.data = requests.get('https://api.exchangerate-api.com/v4/latest/USD').json()
@@ -14,13 +12,11 @@ class RealTimeCurrencyConverter():
     def convert(self, from_currency, to_currency, amount):
         initial_amount = amount
 
-        #first convert it into USD if it is not USD.
-        #because our base currency is USD
 
         if from_currency != 'USD' :
             amount = amount / self.currencies[from_currency]
 
-        # limiting the precision to 4 decimals
+
 
         amount = round(amount * self.currencies[to_currency], 4)
         return amount
